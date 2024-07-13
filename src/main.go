@@ -20,25 +20,25 @@ func main() {
 	var maxResult int
 	flag.StringVar(&targetFilePath, "f", "", "location of the target file")
 	flag.StringVar(&outputFilePath, "o", "", "location of the output file")
-	flag.StringVar(&vinRegex, "v", "\\b[A-HJ-NPR-Z0-9]{17}\\b", "regular expression pattern for a VIN")
+	flag.StringVar(&vinRegex, "v", "(?i)[A-HJ-NPR-Z0-9]{17}", "regular expression pattern for a VIN")
 	flag.IntVar(&maxResult, "max", -1, "max number of vin numbers to extract")
 	flag.Parse()
 
-	var outPut []string
+	var output []string
 
 	if targetFilePath != "" {
 		f, err := os.ReadFile(targetFilePath)
 		check(err)
-		outPut = []string{
+		output = []string{
 			formatOutput(
 				targetFilePath,
 				search(string(f), vinRegex, maxResult),
 			)}
 	}
 	if outputFilePath != "" {
-		writeOutput(outPut, outputFilePath)
+		writeOutput(output, outputFilePath)
 	} else {
-		for _, line := range outPut {
+		for _, line := range output {
 			fmt.Println(line)
 		}
 	}
@@ -46,6 +46,5 @@ func main() {
 
 func search(content string, vinRegex string, maxResult int) []string {
 	re := regexp.MustCompile(vinRegex)
-	var result []string = re.FindAllString(content, maxResult)
-	return result
+	return re.FindAllString(content, maxResult)
 }

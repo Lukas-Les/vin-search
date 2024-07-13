@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func writeOutput(result []string, outputFilePath string) {
@@ -19,11 +20,6 @@ func writeOutput(result []string, outputFilePath string) {
 
 func formatOutput(sourceFileName string, results []string) string {
 	var output string = sourceFileName + "->"
-	if len(results) == 0 {
-		return output
-	}
-	for _, item := range results {
-		output += item + " "
-	}
+	output += strings.Join(results, " ")
 	return output
 }
