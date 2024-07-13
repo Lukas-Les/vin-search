@@ -27,8 +27,8 @@ func main() {
 	flag.IntVar(&maxResult, "max", -1, "max number of vin numbers to extract")
 	flag.Parse()
 
-	if targetDirPath == "" && targetFilePath == "" {
-		panic("target file or directory not provided! Use -f <target file> or -d <target dir>")
+	if (targetDirPath == "" && targetFilePath == "") || (targetDirPath != "" && targetFilePath != "") {
+		panic("Please provide on of -f <target file> or -d <target dir>, and not both!")
 	}
 
 	var output []string
@@ -73,7 +73,6 @@ func collectTargetFilesPaths(targetDirPath string) []string {
 		}
 		return nil
 	})
-
 	if err != nil {
 		fmt.Printf("Error walking the path %v: %v\n", targetDirPath, err)
 	}
