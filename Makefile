@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build test
 
 BINARY_NAME := vin-search
 
