@@ -24,27 +24,22 @@ func main() {
 	flag.IntVar(&maxResult, "max", -1, "max number of vin numbers to extract")
 	flag.Parse()
 
-	f, err := os.ReadFile(targetFilePath)
-	check(err)
-	content := string(f)
+	var outPut []string
 
-	var result []string = search(content, vinRegex, maxResult)
-
-	if outputFilePath != "" {
-		writeOutput(result, outputFilePath)
-	} else {
-		fmt.Println(result)
+	if targetFilePath != "" {
+		f, err := os.ReadFile(targetFilePath)
+		check(err)
+		outPut = []string{
+			formatOutput(
+				targetFilePath,
+				search(string(f), vinRegex, maxResult),
+			)}
 	}
-}
-
-func writeOutput(result []string, outputFilePath string) {
-	outFile, err := os.Create(outputFilePath)
-	check(err)
-	defer outFile.Close()
-	for _, item := range result {
-		_, err := outFile.WriteString(item + "\n")
-		if err != nil {
-			fmt.Println(err)
+	if outputFilePath != "" {
+		writeOutput(outPut, outputFilePath)
+	} else {
+		for _, line := range outPut {
+			fmt.Println(line)
 		}
 	}
 }
