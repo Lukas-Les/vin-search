@@ -30,7 +30,7 @@ make build
 
 ### Run
 
-Use flags to provide the target file or directory:
+Use flags to provide the target file or directory, but not both:
 
     -f : target file
     -d : target directory
@@ -46,7 +46,7 @@ vin-search -d example
 Run the following command to see all available flags and their explanations:
 
 ```sh
-go run . -h
+cd src && go run . -h
 ```
 ## Output
 
