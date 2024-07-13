@@ -28,7 +28,7 @@ func main() {
 	flag.Parse()
 
 	if (targetDirPath == "" && targetFilePath == "") || (targetDirPath != "" && targetFilePath != "") {
-		panic("Please provide on of -f <target file> or -d <target dir>, and not both!")
+		panic("Please provide one of -f <target file> or -d <target dir>, and not both!")
 	}
 
 	var output []string

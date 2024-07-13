@@ -54,7 +54,7 @@ If the output file (-o) is not provided, results are printed to the console.
 
 The output format is:
 
-`<file path> -> <results> <space> <separated>`
+`<file path>-><results> <space> <separated>`
 
 Example Output
 
