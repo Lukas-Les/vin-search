@@ -46,7 +46,7 @@ vin-search -d example
 Run the following command to see all available flags and their explanations:
 
 ```sh
-cd src && go run . -h
+vin-search -h
 ```
 ## Output
 
