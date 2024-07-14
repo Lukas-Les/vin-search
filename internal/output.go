@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-func writeOutput(result []string, outputFilePath string) {
+func WriteOutput(result []string, outputFilePath string) {
 	outFile, err := os.Create(outputFilePath)
-	check(err)
+	Check(err)
 	defer outFile.Close()
 	for _, item := range result {
 		_, err := outFile.WriteString(item + "\n")
@@ -18,7 +18,7 @@ func writeOutput(result []string, outputFilePath string) {
 	}
 }
 
-func formatOutput(sourceFileName string, results []string) string {
+func FormatOutput(sourceFileName string, results []string) string {
 	var output string = sourceFileName + "->"
 	output += strings.Join(results, " ")
 	return output

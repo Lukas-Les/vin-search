@@ -3,7 +3,8 @@
 BINARY_NAME := vin-search
 
 build:
-	cd src && go build -o ../$(BINARY_NAME) .
+	go build ./cmd/vin-search
 
 test:
-	cd src && go test -v
+	go test -v ./cmd/vin-search
+	go test -v ./internal
