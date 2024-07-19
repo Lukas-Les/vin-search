@@ -1,7 +1,7 @@
 .PHONY: build test
 
 build:
-	go build ./cmd/vin-search
+    ./scripts/build.sh
 
 test:
 	go test -v ./cmd/vin-search

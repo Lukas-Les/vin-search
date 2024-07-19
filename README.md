@@ -64,3 +64,33 @@ example/outter-text/inner-text/text3.txt->WAT4C5FWC8S014234 VF34C5FWC8S014287 WA
 example/outter-text/text2.txt->VF34C5FWC8S014234 VF34C5FWC8S014287
 example/text.txt->
 ```
+
+## Install binary
+It possible to install the binary to a directory in your PATH.
+
+1. Generate the binary
+2. Move the binary to a directory in your PATH (e.g. /usr/local/bin)
+
+```sh
+sudo mv vin-search /usr/local/bin
+```
+
+3. Make the binary executable
+
+```sh
+sudo chmod +x /usr/local/bin/vin-search
+```
+
+If you're on a Mac, you may need to use the following command:
+
+```sh
+xattr -d com.apple.quarantine vin-search
+```
+
+
+## Uninstall binary
+1. Remove the binary from the directory in your PATH
+
+```sh
+sudo rm /usr/local/bin/vin-search
+```
